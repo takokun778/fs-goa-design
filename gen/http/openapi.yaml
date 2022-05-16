@@ -1,0 +1,55 @@
+swagger: "2.0"
+info:
+  title: Hello User Service
+  description: Hello User Servise（APIの説明）
+  version: 0.0.1
+host: localhost:8088
+consumes:
+- application/json
+- application/xml
+- application/gob
+produces:
+- application/json
+- application/xml
+- application/gob
+paths:
+  /hello:
+    post:
+      tags:
+      - user
+      summary: hello user
+      operationId: user#hello
+      parameters:
+      - name: HelloRequestBody
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/UserHelloRequestBody'
+      responses:
+        "200":
+          description: OK response.
+          schema:
+            $ref: '#/definitions/UserHelloResponseBody'
+      schemes:
+      - http
+definitions:
+  UserHelloRequestBody:
+    title: UserHelloRequestBody
+    type: object
+    properties:
+      name:
+        type: string
+        description: user name
+        example: Voluptate dicta dolor ut.
+    example:
+      name: Laboriosam repudiandae sint.
+  UserHelloResponseBody:
+    title: UserHelloResponseBody
+    type: object
+    properties:
+      greet:
+        type: string
+        description: greet result
+        example: Doloremque in.
+    example:
+      greet: Fugiat aut.
